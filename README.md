@@ -12,6 +12,12 @@
     解决：搞清楚受控组件与非受控组件[受控组件与非受控组件](https://itbilu.com/javascript/react/4ki9qFFqg.html)    
     添加defaultChecked代替checked
 
+5.map的时候报错：Objects are not valid as a React child (found: object with keys {type, className, onClick, children}). If you meant to render a collection of children, use an array instead or wrap the object using createFragment(object) from the React add-ons. Check the render method of XXX.        
+    （遍历this.props.children时会发生，     
+    如果当前组件没有子节点，它就是 undefined；      
+    如果有一个子节点，数据类型是 object；     
+    如果有多个子节点，数据类型就是 array。）     
+
 
 
 如何避免logout后，后退按钮依旧显示缓存的有关问题
