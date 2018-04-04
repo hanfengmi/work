@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>router</title>
+</head>
+<body>
+    <ul>
+        <li><a href="#/">turn white</a></li>
+        <li><a href="#/blue">turn blue</a></li>
+        <li><a href="#/green">turn green</a></li>
+    </ul>
+</body>
+<script>
+
+    function Router(){
+        this.routes = {};//保存不同路由虚之行的函数
+        this.currentUrl = '';//保存当前hash
+    }
+    Router.prototype.router = function(url,callback){//根据传入的路由赋值要执行的函数
+        this.routes[url] = callback || function(){};
+    }
+    Router.prototype.refresh = function(){//获取当前hash值并执行对应函数
+        this.currentUrl = location.hash.slice(1) || '/';
+        this.routes[this.currentUrl]()// /() || red() || black(); 执行 
+    }
+
+    Router.prototype.init = function(){
+        window.addEventListener('load',this.refresh.bind(this),false);
+        window.addEventListener('hashchange',this.refresh.bind(this),false);
+    }
+
+
+    var Route = new Router();
+    Route.init();
+
+
+    var content = document.querySelector('body');
+    function changeBgColor(color) {
+        content.style.backgroundColor = color;
+    }
+    
+    Route.router('/',function(){
+        changeBgColor('white');
+    });
+
+    Route.router('/blue',function(){
+        changeBgColor('blue');
+    });
+
+    Route.router('/green',function(){
+        changeBgColor('green');
+    });
+</script>
+</html>

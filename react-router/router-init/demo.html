@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+</head>
+<body>
+    <ul>
+        <li><a href="#/">首页</a></li>
+        <li><a href="#/see">你瞅啥</a></li>
+        <li><a href="#/seeYou">瞅你咋滴</a></li>
+    </ul>
+    <div id="inner"></div>
+</body>
+<script src="./js/router.js"></script>
+<script>
+    var routerDemo = new Router();
+    routerDemo.init();
+
+    var inner = document.getElementById('inner');
+    routerDemo.router('/',function(){
+        inner.innerHTML=`
+            <h1>你瞅啥</h1>
+        `;
+    })
+    routerDemo.router('/see',function(){
+        inner.innerHTML=`
+            <h1>标准回答</h1> 
+            <ul>
+                <li>我一瞅您的胸大肌，鼓鼓囊囊好气力</li>
+                <li>我二瞅您的大金链，冰琳冰琳全是钱</li>
+                <li>我三瞅您的龙纹身，一左一右好精神</li>
+            </ul>   
+        `;
+    })
+    routerDemo.router('/seeYou',function(){
+        inner.innerHTML=`
+            <h1>作死回答</h1> 
+            <ul>
+                <li>你不瞅我怎么知道我瞅你？</li>
+                <li>瞅你咋地！</li>
+            </ul>   
+        `;
+    })
+
+</script>
+</html>
