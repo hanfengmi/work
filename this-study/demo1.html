@@ -10,19 +10,131 @@
     
 </body>
 <script>
-    console.log(this);
+    // 1.全局
+    console.log(this);//window
 
     console.log('=============');
-    console.log(window === this);
+    console.log(window === this);//true
 
-    console.log('=============');
+    console.log('1=============');
     var a = 1;
     b = 2;
     let c = 3;
     const d = 4;
-    console.log(window.a, window.b, window.c, window.d);
+    console.log(window.a, window.b, window.c, window.d);//1, 2, undefined, undefined
 
-    console.log('=============');
+    //2.普通函数调用
+    console.log('2=============');
+    name = 'xz';
+    var getName = function(){
+        return this.name
+    }
+    console.log(getName())//xz
+    // console.log((function(){return this.name})())
+
+        //2.1严格模式
+        console.log('2.1=============');
+        var getNameD = function(){
+            'use strict'
+            return this;
+        }
+        console.log(getNameD())//undefind//this指向undefind
+
+
+    //3.对象方法
+    console.log('3=============');
+    var num = 1314526;
+    var obj = {
+        aa:1,
+        getA:function(){
+            console.log(this);//obj
+            console.log(this.aa);//1
+        }
+    }
+    obj.getA();
+    
+        //特殊
+        console.log('3.2=============');
+        var getB = obj.getA;
+        getB()//window, undefind
+        
+        //特殊   函数套函数 | 回调 | 定时器
+        console.log('3.1=============');
+        var objD = {
+            num:1,
+            getA:function(){
+                console.log(this.num);//1
+                setTimeout(function(){
+                    console.log('start 3.1-----------------');
+                    console.log(this.num)//1314526//this指向window
+                    console.log('end 3.1-----------------');
+                },200)
+            }
+        }
+        objD.getA();
+
+
+    
+    //4.作为构造器调用
+    console.log('4=============');
+    var xzClass = function(){
+        this.name = 'xiaozhan';
+    }
+    var xzChild = new xzClass();
+    console.log(xzChild.name)//xiaozhan
+
+        //4.1 构造函数返回了对象
+        console.log('4.1=============');
+        var xzClassD = function(){
+            this.name = 'xiaozhan';
+            return {
+                age:22,
+                // name:'dazhan'
+            }
+        }
+        var dzChild = new xzClassD();
+        console.log(dzChild.name)//dazhan//this指向返回对象
+
+    //5.call apply bind
+    console.log('5=============');
+    var obj5 = {
+        name:'xiaozhan',
+        getName :function(){
+            console.log(this === obj5)
+            console.log(this.name)
+        }
+    }
+
+    var obj5_1 = {
+        name:'xiaozhanzhan'
+    }
+
+    obj5.getName()//true, xiaozhan
+    obj5.getName.call(obj5_1)//false, xiaozhanzhan
+    obj5.getName.apply(obj5_1)//false, xiaozhanzhan
+    obj5.getName.bind(obj5_1)()//false, xiaozhanzhan
+
+
+    //6.箭头函数
+    console.log('6=============');
+    var jiantou = v => v;
+    console.log(jiantou(2))
+
+    console.log('6.1=============');
+    var jiaotou2 = {
+        jname:'xiaozhan2',
+        getName: () => {
+            return this.jname
+        }
+    }
+
+    console.log(jiaotou2.getName())
+
+
+
+
+
+
 
 </script>
 </html>
