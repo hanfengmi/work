@@ -64,11 +64,11 @@
             num:1,
             getA:function(){
                 console.log(this.num);//1
-                setTimeout(function(){
+                (function(){
                     console.log('start 3.1-----------------');
                     console.log(this.num)//1314526//this指向window
                     console.log('end 3.1-----------------');
-                },200)
+                })()
             }
         }
         objD.getA();
@@ -127,14 +127,66 @@
             return this.jname
         }
     }
+    console.log(jiaotou2.getName())//undefind//this指定义时所在的对象，而不是使用时所在的对象
 
-    console.log(jiaotou2.getName())//undefind
+    console.log('6.2=============');
+    var  jiantouObj = {
+        id: 010203,
+        jname:'xiaozhan2',
+        jiaotou2 : {
+            jname:'xiaozhan666',
+            getN:function(){
+                return this.jname
+            },
+            getName: () => {
+                return this.jname
+            },
 
+        }
+    }
+    console.log(jiantouObj.jiaotou2.getN())//xiaozhan666
+    console.log(jiantouObj.jiaotou2.getName())//undefind
 
+    console.log('6.3=============');
+    var jiantouName = 'xiaozhan11111'
+    var  jiantouFn = function(){
+        this.jiantouName = 'xiaozhan123123';
+        (()=>{
+            console.log(this);
+            console.log(this.jiantouName);
+        })()
+        return {
+            jiantouName:'yunlema'
+        }
+    }
 
+    // jiantouFn();//window,  xiaozhan123123
 
+    var jiantouFnChild = new jiantouFn();//
+    console.log(jiantouFnChild.jiantouName)//yunlema
 
+console.log('分割线=======================');
+console.log('分割线=======================');
+console.log('分割线=======================');
+console.log('分割线=======================');
 
+    //让 objA.name= name1；objB.name = name2
+
+    // function obj(name){
+    //     _______
+    // }
+    // obj._____ = "name2";
+    // var a = obj("name1");
+    // var b = new obj;
+
+    function Obj(name){
+       return name;
+    }
+    // obj._____ = "name2";
+    var objA = Obj("name1");
+    var objB = new Obj;
+
+    console.log(objA.name, objB)
 
 </script>
 </html>
