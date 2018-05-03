@@ -12,7 +12,7 @@ var async = require('async');
 
 var ep = new eventproxy();
 
-fs.mkdir(path.join(__dirname, '/json'))
+// fs.mkdir(path.join(__dirname, '/json'))
 
 
 var concurrencyCount = 0;
@@ -25,14 +25,14 @@ var fetchUrl = function (url, callback,name) {
     console.log('现在的并发数是', concurrencyCount, '，正在抓取的是', url, '，耗时' + delay + '毫秒','第'+n+'个');
     
     const req = superagent.get(url);
-    const res = req.pipe(fs.createWriteStream(path.join(__dirname, 'json', name)))
+    // const res = req.pipe(fs.createWriteStream(path.join(__dirname, 'json', name)))
     setTimeout(function () {
         concurrencyCount--;
         callback(null, name);
     }, delay);
 };
 
-async.mapLimit(json, 5, function (url, callback) {
+async.mapLimit(json, 2, function (url, callback) {
     fetchUrl('https://cdn.assets.scratch.mit.edu/internalapi/asset/'+url.md5+'/get/',callback,url.md5)
   }, function (err, result) {
     console.log('final:');
