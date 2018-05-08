@@ -24,6 +24,7 @@
 
 7.react单页面SEO优化
     reactDOMServer研究
+    [使用HeadlessChrome做单页应用SEO](https://github.com/gwuhaolin/blog/issues/8)
 
 
 8.http强制转成https
