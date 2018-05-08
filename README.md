@@ -25,7 +25,9 @@
 7.react单页面SEO优化
     reactDOMServer研究
 
+
 8.http强制转成https
+    <meta http-equiv="refresh">
 
 
 
