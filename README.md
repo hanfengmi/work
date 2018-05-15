@@ -25,10 +25,18 @@
 7.react单页面SEO优化
     reactDOMServer研究
     [使用HeadlessChrome做单页应用SEO](https://github.com/gwuhaolin/blog/issues/8)
+    Puppeteer(似乎是可以的)
 
 
 8.http强制转成https
     <meta http-equiv="refresh">
+
+
+9.flex布局，当子集的高度超过父级时，子集高度会被截取，不能滚动到头部
+    解决：不使用justify-content: center;给子集添加   margin：auto
+        (当子集多的情况下，我想给自己添加margin隔开怎么做？？？？？？)
+
+
 
 
 
