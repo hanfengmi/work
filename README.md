@@ -53,6 +53,12 @@
 
 
 
+react 在子组件中获取props，为空
+    react-router组件中，如果是component={() => <News openAuth={this.openModal} /> },需要withRouter将props整合,若是{News},直接可以获取props所有值[withRouter](https://blog.csdn.net/ISaiSai/article/details/78094556)
+
+
+
+
 
 
 
