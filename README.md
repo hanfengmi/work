@@ -81,16 +81,18 @@ $ sudo ln -s /usr/local/bin/python3 /usr/bin/python
 
 系统启用了SIP(System Integrity Protection), 导致root用户也没有权限修改/usr/bin目录。按如下方式可恢复权限。
 
-*更改usr文件*
+[更改usr文件](https://segmentfault.com/q/1010000003095378/a-1020000003927277)
 
 5.iterm 下直接
 ```
+
 python 
 ====>>>
 Python 3.7.0 (default, Aug 22 2018, 15:22:33)
 [Clang 9.1.0 (clang-902.0.39.2)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
+
 ```
 
 
