@@ -57,9 +57,41 @@ react 在子组件中获取props，为空
     react-router组件中，如果是component={() => <News openAuth={this.openModal} /> },需要withRouter将props整合,若是{News},直接可以获取props所有值[withRouter](https://blog.csdn.net/ISaiSai/article/details/78094556)
 
 
+### 8-28 升级mac python版本
 
 
 
+
+
+1.   ``` brew install python3 ```
+2.  更改默认python版本   
+（解除 Python2 的软链接“软链接”和“硬链接”）
+
+``` 
+$ which python    //查看python目录    
+sudo unlink /usr/bin/python 
+```
+
+3.创建 Python3 软链接（以后输入 python 则会直接转为 python3）
+```
+$ which python3
+$ sudo ln -s /usr/local/bin/python3 /usr/bin/python
+```
+4.提示Operation not permitted
+
+系统启用了SIP(System Integrity Protection), 导致root用户也没有权限修改/usr/bin目录。按如下方式可恢复权限。
+
+*更改usr文件*
+
+5.iterm 下直接
+```
+python 
+====>>>
+Python 3.7.0 (default, Aug 22 2018, 15:22:33)
+[Clang 9.1.0 (clang-902.0.39.2)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
 
 
 
