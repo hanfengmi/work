@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.js"></script>
+</head>
+<body>
+    <input type='file' />  
+    <button id="upload-btn" type="button">upload</button>  
+</body>
+<script>
+    var files = [];
+$(document).ready(function(){
+  $("input").change(function(){
+    files = this.files;
+    console.log(files)
+  });
+});
+$("#upload-btn").click(function(){
+  var fd = new FormData();
+  for (var i = 0; i < files.length; i++) {
+    fd.append("file", files[i]);
+  }
+  $.ajax({
+    url: "/upload/",
+    method: "POST",
+    data: fd,
+    contentType: false,
+    processData: false,
+    cache: false,
+    success: function(data){
+      console.log(data);
+    }
+  });
+});
+</script>
+</html>
