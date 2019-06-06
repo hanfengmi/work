@@ -85,6 +85,39 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ***
 
+## 小程序相关
+1. 隐藏右边滚动条
+> 查找资料：说在全局添加下面代码就行
+```
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+```
+测试发现并不管用。   
+**解决**=>
+```
+<view class="old-belt-detail-box">
+  <scroll-view scroll-y class="old-belt-detail">
+  </scroll-view>
+</view>
+
+// 在scroll外面套一层，给父级设置属性：
+
+/* css start */
+
+.old-belt-detail-box {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* css end */
+```
 
 
  
